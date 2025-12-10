@@ -1,0 +1,10 @@
+export { default as LoginPage } from './LoginPage';
+export { default as SignUpPage } from './SignUpPage';
+export { default as ForgotPasswordPage } from './ForgotPasswordPage';
+export { default as OTPPage } from './OTPPage';
+export { default as NonVerifiedPage } from './NonVerifiedPage';
+export { default as DeactivatedPage } from './DeactivatedPage';
+export { default as ResetPasswordPage } from './ResetPasswordPage';
+export { default as ChangePasswordPage } from './ChangePasswordPage';
+export { default as ContactPage } from './ContactPage';
+export { default as RoleSelectionPage } from './RoleSelectionPage';

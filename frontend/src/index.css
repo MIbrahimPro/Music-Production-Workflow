@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+@theme {
+    --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-family-mono: 'JetBrains Mono', monospace;
+}
+
+/* Base styles - SMALLER SIZING */
+@layer base {
+    * {
+        /* @apply border-border; */
+    }
+
+    html {
+        @apply antialiased;
+        scroll-behavior: smooth;
+        /* Base font size reduced for smaller UI */
+        font-size: 14px;
+    }
+
+    @media (min-width: 640px) {
+        html {
+            font-size: 14px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        html {
+            font-size: 15px;
+        }
+    }
+
+    body {
+        @apply font-sans;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Selection colors */
+    ::selection {
+        @apply bg-zinc-900 text-zinc-50;
+    }
+
+    .dark ::selection {
+        @apply bg-zinc-50 text-zinc-900;
+    }
+
+    /* Focus visible styles */
+    :focus-visible {
+        @apply outline-none ring-2 ring-offset-2;
+    }
+
+    .dark :focus-visible {
+        @apply ring-zinc-50 ring-offset-zinc-950;
+    }
+
+    .light :focus-visible {
+        @apply ring-zinc-900 ring-offset-zinc-50;
+    }
+}
+
+/* Custom utilities */
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+
+    /* GSAP animation helpers */
+    .gsap-hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .animate-item {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .animate-shake {
+        animation: shake 0.5s ease-in-out;
+    }
+
+    @keyframes shake {
+
+        0%,
+        100% {
+            transform: translateX(0);
+        }
+
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+            transform: translateX(-4px);
+        }
+
+        20%,
+        40%,
+        60%,
+        80% {
+            transform: translateX(4px);
+        }
+    }
+
+    /* Brutalist hover effect */
+    .brutalist-hover {
+        @apply transition-all duration-200;
+    }
+
+    .brutalist-hover:hover {
+        transform: translate(-2px, -2px);
+    }
+
+    /* Scrollbar styling */
+    .scrollbar-thin {
+        scrollbar-width: thin;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar-track {
+        @apply bg-transparent;
+    }
+
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+        @apply bg-zinc-400 rounded-none;
+    }
+
+    .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+        @apply bg-zinc-600;
+    }
+}
+
+/* Page transition animations */
+@layer components {
+    .page-wrapper {
+        will-change: opacity, transform;
+    }
+}
